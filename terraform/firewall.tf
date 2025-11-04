@@ -15,3 +15,17 @@ resource "google_compute_firewall" "allow_internal" {
   source_ranges = [var.network_cidr]
 }
 
+resource "google_compute_firewall" "allow_iap_ssh" {
+  name    = "k8s-allow-iap-ssh"
+  network = google_compute_network.k8s_vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["35.235.240.0/20"]
+
+  target_tags = ["iap-ssh"]
+}
+
