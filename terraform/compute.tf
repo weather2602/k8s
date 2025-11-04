@@ -14,7 +14,7 @@ resource "google_compute_instance" "controlplane" {
     subnetwork = google_compute_subnetwork.k8s_subnet.id
   }
 
-  tags = ["k8s-node", "controlplane"]
+  tags = ["k8s-node", "controlplane", "iap-ssh"]
 }
 
 resource "google_compute_instance" "worker" {
@@ -33,5 +33,5 @@ resource "google_compute_instance" "worker" {
     subnetwork = google_compute_subnetwork.k8s_subnet.id
   }
 
-  tags = ["k8s-node", "worker"]
+  tags = ["k8s-node", "worker", "iap-ssh"]
 }
