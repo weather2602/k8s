@@ -29,3 +29,15 @@ resource "google_compute_firewall" "allow_iap_ssh" {
   target_tags = ["iap-ssh"]
 }
 
+resource "google_compute_firewall" "allow_egress_internet" {
+  name      = "k8s-allow-egress-internet"
+  network   = google_compute_network.k8s_vpc.name
+  direction = "EGRESS"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "443"]
+  }
+
+  destination_ranges = ["0.0.0.0/0"]
+}
