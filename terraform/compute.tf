@@ -5,7 +5,7 @@ resource "google_compute_instance" "controlplane" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-2004-focal-v20240927"
+      image = "projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20251023"
       size  = 50
     }
   }
@@ -24,7 +24,7 @@ resource "google_compute_instance" "worker" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-2004-focal-v20240927"
+      image = "projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20251023"
       size  = 50
     }
   }
